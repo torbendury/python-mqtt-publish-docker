@@ -1,7 +1,7 @@
 FROM python:3.8.12-slim
 
 # update local package indexes + packages and update pip
-RUN apt update && apt upgrade -y && /usr/local/bin/python -m pip install --upgrade pip
+RUN apt update && apt upgrade -y && apt clean && /usr/local/bin/python -m pip install --upgrade pip
 # add a mqtt user so we don't need root
 RUN groupadd -r mqtt && useradd -r -m -g mqtt mqtt
 # use a separate directory for our application
